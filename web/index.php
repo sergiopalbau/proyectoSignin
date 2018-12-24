@@ -1,3 +1,32 @@
+<?php 
+    require_once 'autoload.php';
+    if (isset($_GET['controller']))
+    {
+        $nombre_controlador = $_GET ['controller'].'Controller';
+    }else{
+        index();
+        exit();
+    }
+    
+    if (class_exists ($nombre_controlador)){
+        $controlador = new $nombre_controlador();
+        
+        if (isset ($_GET['action']) && method_exists($controlador, $_GET['action'])){
+            $action = $_GET['action'];
+            $controlador->$action();
+        }else {
+            echo "La pagina que buscas no existe";
+        }
+    }else {
+        echo "La pagina que buscas no existe";
+    }
+    
+?>
+
+<?php
+    function index () {
+       
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,19 +44,19 @@
 	<section id="wrapper" class="login-register login-sidebar" style="background-image:url(assets/images/fondo2.jpg);">
     <div class="login-box card">
         <div class="card-body">
-            <form action="controllers/login/login.php" method="post" class="form-horizontal form-material text-center">
-                <a href="index.php" class="text-center db"><br/><img src="assets/images/logo.svg" alt="Home" /></a>
-                <div class="form-group m-t-40">
+            <form action="index.php/?controller=login&action=comprueba" method="POST" class="form-horizontal form-material text-center">
+                <a href="index.php" class="text-center db "><br/><img  id="logo_login" class="m-5" src="assets/images/logo.svg" alt="Home" /></a>
+                <div class="form-group mt-4">
                     <div class="col-xs-12">
-                        <input type="text" name="usuario" class="form-control" type="usuario" required placeholder="usuario">
+                        <input type="text" name="usuario" class="form-control" id ="usuario" required placeholder="usuario">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 mt-2">
                         <input class="form-control" type="password" required placeholder="password" name="pass">
                     </div>
                 </div>
-                <div class="form-group text-center m-t-20">
+                <div class="form-group text-center mt-2">
                     <div class="col-xs-12">
                         <input class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit" name="acceder" id="acceder" value="acceder">
                     </div>
@@ -39,3 +68,4 @@
 	
 </body>
 </html>
+    <?php } ?>

@@ -77,3 +77,8 @@ li a:hover:not(.active) {
     position: absolute;
     height: 100%;
 }
+
+#logo_login {
+    width:160px;
+    height: 160px;
+}

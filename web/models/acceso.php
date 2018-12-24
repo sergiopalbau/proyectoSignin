@@ -1,6 +1,6 @@
 <?php
-
-class acceso {
+require_once 'ModeloBase.php';
+class acceso extends ModeloBase {
 
 	private $id;
 	private $rol;
@@ -9,7 +9,10 @@ class acceso {
 	private $email;
 	private $telefono;
 	private $explotacion;
-
+        
+        public function __construct() {
+            parent::__construct();
+        }
 	function getId () {
 		return $this->id;
 	}
@@ -31,8 +34,6 @@ class acceso {
 	function getExplotacion () {
 		return $this->explotacion;
 	}
-
-	
 	function setRol ($rol) {
 		$this->id= $rol;
 
@@ -55,10 +56,18 @@ class acceso {
 	}
 	function setTelefono ($telefono) {
 		$this->$telefono =$telefono;
-	}
-        
+	}        
 	function setExplotacion ($explotacion) {
 		$this->$explotacion =$explotacion;
 	}
+        
+        public function consultaUsuario ($nombre,$password){
+            $sql = "SELECT * FROM ACCESSO WHERE nombre = '$nombre' AND password='$password'";
+            $guardado = $this->db->query($sql);
+            print_r($guardado);
+            return $guardado;
+            
+            
+        }
 
 }
