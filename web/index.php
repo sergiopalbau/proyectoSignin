@@ -1,3 +1,9 @@
+<?php
+session_start();
+$msg = (isset($_SESSION['msg']))? $_SESSION['msg'] : "";
+     
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,6 +32,9 @@
                     <div class="col-xs-12 mt-2">
                         <input class="form-control" type="password" required placeholder="password" name="pass">
                     </div>
+                </div>
+                <div class="form-group text-center mt-2">
+                    <label style="color:red"><?php echo $msg ?></label>
                 </div>
                 <div class="form-group text-center mt-2">
                     <div class="col-xs-12">
