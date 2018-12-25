@@ -3,12 +3,12 @@
 	padding: 0px;
 	box-sizing: border-box;;
 }
-
+/*
 
 body {
     margin: 0;
-}
-
+}*/
+/*
 ul {
     list-style-type: none;
     margin: 0;
@@ -36,7 +36,7 @@ li a:hover:not(.active) {
     background-color: #555;
     color: white;
 }
-
+*/
 .login-register {
     background-size: cover;
     background-repeat: no-repeat;
