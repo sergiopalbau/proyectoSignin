@@ -1,7 +1,8 @@
 <?php
 session_start();
 $msg = (isset($_SESSION['msg']))? $_SESSION['msg'] : "";
-     
+var_dump($_SESSION);
+require 'config/parameters.php'
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ $msg = (isset($_SESSION['msg']))? $_SESSION['msg'] : "";
 	<section id="wrapper" class="login-register login-sidebar" style="background-image:url(assets/images/fondo2.jpg);">
     <div class="login-box card">
         <div class="card-body">
-            <form action="controllers/LoginController.php" method="POST" class="form-horizontal form-material text-center">
+            <form action="<?php echo base_url."sadmin.php/?controller=Login&action=acceso"?>" method="POST" class="form-horizontal form-material text-center">
                 <a href="index.php" class="text-center db "><br/><img  id="logo_login" class="m-5" src="assets/images/logo.svg" alt="Home" /></a>
                 <div class="form-group mt-4">
                     <div class="col-xs-12">
