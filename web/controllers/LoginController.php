@@ -1,5 +1,5 @@
 <?php 
-   // session_start();
+
     
     $url = "http://localhost/proyectoSignin/web/index.php";
     $url2 = "http://localhost/proyectoSignin/web/sadmin.php";
