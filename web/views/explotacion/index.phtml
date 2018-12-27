@@ -28,8 +28,14 @@
                                <?php echo $dato['municipio']; ?>
                             </td>
                              <td>
-                                <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevo" ?>" class="btn btn-warning">Editar</a>
-                                 <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevo" ?>" class="btn btn-danger">Eliminar</a>
+                                 <div class="row">
+                                     <div class="col-6">
+                                        <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevoeditar&dato=".$dato['id_explotacion'] ?>" class="btn btn-warning btn-block">Editar</a>
+                                    </div>
+                                    <div class="col-6">  
+                                        <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=eliminar&dato=".$dato['id_explotacion'] ?>" class="btn btn-danger btn-block">Eliminar</a>
+                                    </div>
+                                 </div>
                             </td>
                         </tr>
                               
