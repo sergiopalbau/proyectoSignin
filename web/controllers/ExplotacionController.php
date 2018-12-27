@@ -61,7 +61,9 @@ class ExplotacionController {
             $explotacion = new Explotacion;   
             $explotacion->setId ($_POST['id_explotacion']);
             $explotacion->setMunicipio($_POST['municipio']);
-            var_dump($explotacion);
+            if ($explotacion->edit()){
+                        header ("location: ?controller=explotacion&action=index");
+                    }
         }else {
             echo "Faltan datos.";
         }
