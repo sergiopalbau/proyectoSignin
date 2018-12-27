@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $('#tablon').DataTable( {
-        "paging": false,
         "language": {
 	"sProcessing":     "Procesando...",
 	"sLengthMenu":     "Mostrar _MENU_ registros",
