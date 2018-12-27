@@ -27,10 +27,11 @@ class Explotacion extends ModeloBase {
         $this->municipio = $municipio;
     }
     
-    function add () {
+    function add() {
         $sql = "INSERT INTO explotacion VALUES ('{$this->id}','{$this->municipio}')";
         $this->db->query($sql);
         echo $sql;
+        return true;
     }
 
 }// fin clase

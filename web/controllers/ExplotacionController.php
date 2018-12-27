@@ -15,8 +15,34 @@ class ExplotacionController {
         
     }
     
-    function add () {
+    function nuevo () {
        require_once 'views/explotacion/add.phtml';
+    }
+
+    function add () {
+    
+        if ($_POST){
+            var_dump($_POST);
+            include_once 'models/Explotacion.php';
+            if (isset($_POST['id_explotacion']) && isset ($_POST['municipio'])){
+
+                    $explotacion = new Explotacion;
+                    $explotacion->setId ($_POST['id_explotacion']);
+                    $explotacion->setMunicipio($_POST['municipio']);
+                    
+                    if ($explotacion->add()){
+
+                        header ("location: ?controller=explotacion&action=index");
+                    }
+                    
+
+
+
+            }else {
+                echo "no hay envio post, nada que hacer";
+                exit;
+            }
+        }
     }
     
 } //fin class
