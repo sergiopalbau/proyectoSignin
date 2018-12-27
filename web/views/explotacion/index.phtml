@@ -33,7 +33,7 @@
                                         <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevoeditar&dato=".$dato['id_explotacion'] ?>" class="btn btn-warning btn-block">Editar</a>
                                     </div>
                                     <div class="col-6">  
-                                        <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=eliminar&dato=".$dato['id_explotacion'] ?>" class="btn btn-danger btn-block">Eliminar</a>
+                                        <a id="<?php echo $dato['id_explotacion'];?>" href="<?php echo base_url."sadmin.php/?controller=explotacion&action=eliminar&dato=".$dato['id_explotacion'] ?>" class="btn btn-danger btn-block">Eliminar</a>
                                     </div>
                                  </div>
                             </td>
@@ -64,6 +64,15 @@
 <script type="text/javascript" src="../assets/js/dataTables.min.js"></script> 
 <script type="text/javascript" src="../assets/js/dataTables.bootstrap4.min.js"></script>
 
+    
+<script>
+    console.log ("esperando eventos");
+ $( ".btn.btn-danger.btn-block" ).click(function() {
+     console.log("hola");
+  console.log ($(this).attr('id'));
+    });
+
+</script>
 <?php
 
     require_once 'views/layaout/footer.php';
