@@ -16,7 +16,7 @@ class ExplotacionController {
     }
     
     function nuevo () {
-       require_once 'views/explotacion/add.phtml';
+       require_once 'views/explotacion/nuevo.phtml';
     }
 
     function add () {
