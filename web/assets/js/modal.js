@@ -2,7 +2,7 @@ var modalConfirm = function(callback){
   var id ="";
   $( ".btn.btn-danger.btn-block" ).click(function() {
     id = $(this).attr('id');
-    $("#myModalLabel").append(" "+ id);
+    $("#ref").text(" "+ id);
     $("#mi-modal").modal('show');
     });
   $("#btn-confirm").on("click", function(){
@@ -23,6 +23,8 @@ var modalConfirm = function(callback){
 modalConfirm(function(confirm){
   if(confirm){
     //Acciones si el usuario confirma
+    var url = "http://jquery4u.com";  
+    $(location).attr('href',url);
     $("#result").html("CONFIRMADO");
   }else{
     //Acciones si el usuario no confirma
