@@ -32,10 +32,10 @@
 	<div class="col">
 		<ul class="nav nav-tabs">
 		  <li class="nav-item">
-		    <a class="nav-link active" href="#!">Inicio</a>
+		    <a class="nav-link active" href="<?php echo base_url."sadmin.php/?controller=Login&action=index"?>">Inicio</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#!">Explotaciones</a>
+		    <a class="nav-link" href="<?php echo base_url."sadmin.php/?controller=Explotacion&action=index"?>">Explotaciones</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="#!">Acceso web</a>
