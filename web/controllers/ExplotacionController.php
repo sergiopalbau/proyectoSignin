@@ -16,7 +16,7 @@ class ExplotacionController {
     }
     
     function add () {
-        echo "añadir explotacion";
+       require_once 'views/explotacion/add.phtml';
     }
     
 } //fin class
