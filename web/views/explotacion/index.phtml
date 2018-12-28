@@ -33,10 +33,9 @@
                                         <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevoeditar&dato=".$dato['id_explotacion'] ?>" class="btn btn-warning btn-block">Editar</a>
                                     </div>
                                     <div class="col-6">  
-                                        <button class="btn btn-danger btn-block" id="<?php echo $dato['id_explotacion'];?>">Eliminar</button>
-                                        <?php /*
-                                        <!--<a id="<?php echo $dato['id_explotacion'];?>" href="<?php echo base_url."sadmin.php/?controller=explotacion&action=eliminar&dato=".$dato['id_explotacion'] ?>" class="btn btn-danger btn-block">Eliminar</a>-->
-                                         * */?>
+                                      
+                                        <a id="<?php echo $dato['id_explotacion'];?>" href="<?php echo base_url."sadmin.php/?controller=explotacion&action=eliminar&dato=".$dato['id_explotacion'] ?>" class="btn btn-danger btn-block">Eliminar</a>
+                                         
                                     </div>
                                  </div>
                             </td>
@@ -75,7 +74,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id="modal-btn-si">Si</button>
-        <button type="button" class="btn btn-primary" id="modal-btn-no">No</button>
       </div>
     </div>
   </div>
@@ -83,14 +81,14 @@
 <div class="alert" role="alert" id="result"></div>
   	
 
-<!--<tr><td> $dato['id']</td><td>$dato['municipio']</td><td>[editar][borrar]</td></tr>-->
+
 
  <!-- datatables -->
 <link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css"/>
 <link rel="stylesheet" type="text/css" href="../assets/css/dataTables.bootstrap4.min.css"/>
 <script type="text/javascript" src="../assets/js/dataTables.min.js"></script> 
 <script type="text/javascript" src="../assets/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript" src="../assets/js/modal.js"></script>
+
     
 <?php
     require_once 'views/layaout/footer.php';
