@@ -42,6 +42,12 @@ class Explotacion extends ModeloBase {
         return true;
     }
     
+    function delete (){
+        $sql= "DELETE FROM explotacion WHERE id_explotacion = '{$this->id}'";
+        $this->db->query($sql);
+        echo  $sql;
+        return true;
+    }
     
     public function conseguirId (){
         $query = $this->db->query ("SELECT * FROM explotacion WHERE id_explotacion = '{$this->id}'");

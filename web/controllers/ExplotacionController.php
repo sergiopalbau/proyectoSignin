@@ -72,7 +72,31 @@ class ExplotacionController {
     }
     
     function eliminar () {
-        echo "eliminar" . $_GET['dato'];
+        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+            include_once 'models/Explotacion.php';
+            $explotacion = new Explotacion;   
+            $explotacion->setId ($_GET['dato']);
+            $consulta= $explotacion->conseguirId();
+              require_once 'views/explotacion/eliminar.phtml';
+        }else{
+            Echo "No tiene suficientes privilegios para llevar a cabo esta operacion";
+        }
+        
+    }
+    
+    function delete () {
+        if ($_POST){
+            var_dump ($_POST);
+            include_once 'models/Explotacion.php';
+            $explotacion = new Explotacion;   
+            $explotacion->setId ($_POST['id_explotacion']);
+            $explotacion->setMunicipio($_POST['municipio']);
+            if ($explotacion->delete()){
+                        header ("location: ?controller=explotacion&action=index");
+                    }
+        }else {
+            echo "Faltan datos.";
+        }
     }
 } //fin class
 
