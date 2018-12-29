@@ -47,7 +47,7 @@ class ExplotacionController {
             $explotacion = new Explotacion;   
             $explotacion->setId ($_GET['dato']);
             $consulta= $explotacion->conseguirId();
-             require_once 'views/explotacion/nuevo.phtml';
+            require_once 'views/explotacion/nuevo.phtml';
         }else{
             Echo "No tiene suficientes privilegios para llevar a cabo esta operacion";
         }
@@ -62,8 +62,11 @@ class ExplotacionController {
             $explotacion->setId ($_POST['id_explotacion']);
             $explotacion->setMunicipio($_POST['municipio']);
             if ($explotacion->edit()){
-                        header ("location: ?controller=explotacion&action=index");
-                    }
+                header ("location: ?controller=explotacion&action=index");
+            }else{
+                echo "no se pudo completar la operacion.";
+                header ("Refresh:5; url=?controller=explotacion&action=index");
+            }
         }else {
             echo "Faltan datos.";
         }
