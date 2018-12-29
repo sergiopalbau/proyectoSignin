@@ -1,5 +1,10 @@
 <?php
-    
+    $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "active",
+      "acceso"        =>  "",
+      "registro"      =>  ""
+    ];
     $id = (isset($consulta))? $consulta['id_explotacion'] : "";
     $municipio = (isset($consulta))? $consulta['municipio'] : "";
         
@@ -22,15 +27,8 @@
                 <input class="form-control" type="text" name="municipio" id="municipio" value ="<?php echo $municipio ;?>" readonly="">
             </div>
             <br><br>
-            <div class="form-group">
-                <div class="row ">
-                    <button type="submit" class="btn btn-danger col">Eliminar</button>
-                </div>
-                <br>
-                <div class="row">
-                     <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=index" ?>" class="btn btn-secondary col">Cancelar</a>
-                </div>
-            </div>
+                    <button type="submit" class="btn btn-danger col-1">Eliminar</button>
+                    <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
         </form>
     </div>
 </div>    

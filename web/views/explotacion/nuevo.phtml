@@ -1,11 +1,17 @@
 <?php
-    
     $id = (isset($consulta))? $consulta['id_explotacion'] : "";
     $municipio = (isset($consulta))? $consulta['municipio'] : "";
     $funcion =  (isset($consulta))? "Editar" : "Añadir";
     $accion =  (isset($consulta))? "edit" : "add";
+    $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "active",
+      "acceso"        =>  "",
+      "registro"      =>  ""
+    ];
     
-    require_once 'views/layaout/header.php';
+    
+    include 'views/layaout/header.php';
  ?>
 <div class="container">
     <br><br><br>
@@ -24,7 +30,9 @@
                 <input class="form-control" type="text" name="municipio" id="municipio" value ="<?php echo $municipio ;?>" required>
             </div>
             <br><br>
-            <button type="submit" class="btn btn-success"><?php echo $funcion ?></button>
+                <button type="submit" class="btn btn-success col-1"><?php echo $funcion ?></button>
+                <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
+           
         </form>
     </div>
 </div>    
