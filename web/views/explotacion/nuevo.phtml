@@ -1,0 +1,39 @@
+<?php
+    $id = (isset($consulta))? $consulta['id_explotacion'] : "";
+    $municipio = (isset($consulta))? $consulta['municipio'] : "";
+    $funcion =  (isset($consulta))? "Editar" : "Añadir";
+    $accion =  (isset($consulta))? "edit" : "add";
+    $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "active",
+      "acceso"        =>  "",
+      "registro"      =>  ""
+    ];
+    
+    
+    include 'views/layaout/header.php';
+ ?>
+<div class="container">
+    <br><br><br>
+    <div class="row">
+    <h1><?php echo $funcion ?> Explotación</h1>
+    </div>
+    <br>
+    <div class="row">
+        <form action="<?php echo base_url . "sadmin.php/?controller=Explotacion&action=".$accion; ?>" method="POST" class="col">
+            <div class="form-group">
+                <label for="id">Introduzca ID</label>
+                <input class="form-control" type="text" name="id_explotacion" id="id_explotacion" value ="<?php echo $id ;?>" required>
+            </div>
+            <div class="form-group">
+                <label for="id">Introduzca Municipio</label>
+                <input class="form-control" type="text" name="municipio" id="municipio" value ="<?php echo $municipio ;?>" required>
+            </div>
+            <br><br>
+                <button type="submit" class="btn btn-success col-1"><?php echo $funcion ?></button>
+                <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
+           
+        </form>
+    </div>
+</div>    
+<?php  require_once 'views/layaout/footer.php';   ?>

@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/proyectoSignin/web/index.php</file>
             <file>file:/D:/xampp/htdocs/proyectoSignin/web/views/layaout/header.php</file>
-            <file>file:/D:/xampp/htdocs/proyectoSignin/web/controllers/LogoutController.php</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/controllers/ExplotacionController.php</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/views/layaout/footer.php</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/assets/js/tabla.js</file>
             <file>file:/D:/xampp/htdocs/proyectoSignin/web/sadmin.php</file>
-            <file>file:/D:/xampp/htdocs/proyectoSignin/web/models/login.php</file>
-            <file>file:/D:/xampp/htdocs/proyectoSignin/web/controllers/LoginController.php</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/models/ModeloBase.php</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/assets/js/modal.js</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/models/Explotacion.php</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/views/explotacion/index.phtml</file>
+            <file>file:/D:/xampp/htdocs/proyectoSignin/web/views/explotacion/nuevo.phtml</file>
         </group>
     </open-files>
 </project-private>

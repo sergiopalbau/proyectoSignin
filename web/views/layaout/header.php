@@ -1,6 +1,7 @@
-<?php $usuario = isset($_SESSION['nombre'])? $_SESSION['nombre'] : "DESCONOCIDO";
-
-?>
+<?php 
+    $usuario = isset($_SESSION['nombre'])? $_SESSION['nombre'] : "DESCONOCIDO";
+    
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,27 +33,18 @@
 	<div class="col">
 		<ul class="nav nav-tabs">
 		  <li class="nav-item">
-		    <a class="nav-link active" href="#!">Inicio</a>
+		    <a class="nav-link <?php echo $menu['inicio'] ?>" href="<?php echo base_url."sadmin.php/?controller=Login&action=index"?>">Inicio</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#!">Explotaciones</a>
+		    <a class="nav-link <?php echo $menu['explotaciones'] ?>" href="<?php echo base_url."sadmin.php/?controller=Explotacion&action=index"?>">Explotaciones</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="#!">Acceso web</a>
+		    <a class="nav-link <?php echo $menu['acceso'] ?>" href="#">Acceso web</a>
 		  </li>
 		   <li class="nav-item">
-		    <a class="nav-link" href="#!">Registro Visitas</a>
+		    <a class="nav-link <?php echo $menu['registro'] ?>" href="#">Registro Visitas</a>
 		  </li>
-		   <li class="nav-item dropdown">
-			    <a class="nav-link dropdown-toggle" data-toggle="dropdown"
-			       href="#!" role="button" aria-haspopup="true" aria-expanded="false">
-			       Dropdown</a>
-			    <div class="dropdown-menu">
-			      <a class="dropdown-item" href="#!">Action</a>
-			      <a class="dropdown-item" href="#!">Another action</a>
-			    </div>
-		  </li>
-		</ul>
+                </ul>
 	</div>
 	</div>
 </div>

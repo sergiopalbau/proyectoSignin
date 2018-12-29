@@ -11,21 +11,7 @@ class Explotacion extends ModeloBase {
             
     }
     
-    function getId() {
-        return $this->id;
-    }
-
-    function getMunicipio() {
-        return $this->municipio;
-    }
-
-    function setId($id) {
-        $this->id = $id;
-    }
-
-    function setMunicipio($municipio) {
-        $this->municipio = $municipio;
-    }
+    
     /**
      * añade el objeto a la bbdd
      * @return boolean

@@ -8,7 +8,7 @@
         header ("refresh: 5; index.php");
         exit;
     }*/
-
+    /*prueba git */
     if (isset($_GET['controller']))
     {
         $nombre_controlador = $_GET ['controller'].'Controller';

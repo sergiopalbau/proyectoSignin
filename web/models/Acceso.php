@@ -1,6 +1,7 @@
 <?php
+
 require_once 'ModeloBase.php';
-class Explotacion extends ModeloBase {
+class Acceso extends ModeloBase {
 
     private $id;
     private $municipio;
@@ -72,3 +73,4 @@ class Explotacion extends ModeloBase {
     }
 
 }// fin clase
+

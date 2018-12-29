@@ -1,12 +1,14 @@
 <?php
-    
-    require_once 'views/layaout/header.php';
+     $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "active",
+      "acceso"        =>  "",
+      "registro"      =>  ""
+    ];
+     require_once 'views/layaout/header.php';
  ?>
 <div class="container">
-    <br>
-    <br>
-    <br>
-   
+    <br><br><br>   
         <div class="row my-2">
             <div class="col">
                 <table id="tablon" class=" table table-striped table-bordered table-hover" style="width:100%">
@@ -28,7 +30,14 @@
                                <?php echo $dato['municipio']; ?>
                             </td>
                              <td>
-                               [editar][borrar]
+                                 <div class="row">
+                                     <div class="col-6">
+                                        <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevoeditar&dato=".$dato['id_explotacion'] ?>" class="btn btn-warning btn-block">Editar</a>
+                                    </div>
+                                    <div class="col-6">  
+                                      <a id="<?php echo $dato['id_explotacion'];?>" href="<?php echo base_url."sadmin.php/?controller=explotacion&action=eliminar&dato=".$dato['id_explotacion'] ?>" class="btn btn-danger btn-block">Eliminar</a>
+                                    </div>
+                                 </div>
                             </td>
                         </tr>
                               
@@ -39,28 +48,24 @@
                 </table>
             </div>
         </div>
+        <br>
         <div class="row mt-3">
             <div class="col">
-                <a href="<?php echo base_url."sadmin.php/?controller=Explotacion&action=add" ?>" class="btn btn-success">Añadir</a>
+                <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevo" ?>" class="btn btn-success">Añadir</a>
             </div>
         </div>
 </div>
-     
 
-  	
-
-<!--<tr><td> $dato['id']</td><td>$dato['municipio']</td><td>[editar][borrar]</td></tr>-->
+<br>
+<br>
+<br>
 
  <!-- datatables -->
- <link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css"/>
 <link rel="stylesheet" type="text/css" href="../assets/css/dataTables.bootstrap4.min.css"/>
 <script type="text/javascript" src="../assets/js/dataTables.min.js"></script> 
 <script type="text/javascript" src="../assets/js/dataTables.bootstrap4.min.js"></script>
-
+   
 <?php
-
     require_once 'views/layaout/footer.php';
-    
-    
-
  ?>
