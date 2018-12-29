@@ -33,8 +33,7 @@
       }
 
       public function index (){
-          require 'views/layaout/header.php';
-          require 'views/layaout/footer.php';
+          require 'views/inicio/index.phtml';
       }       
       
       public function acceso ()
