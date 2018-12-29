@@ -10,7 +10,7 @@ class ModeloBase {
         $this->datos = array();
     }
     public function conseguirTodos($tabla) {
-      
+        unset($this->datos);
         $query = $this->db->query ("SELECT * FROM $tabla");
         
       
@@ -20,7 +20,8 @@ class ModeloBase {
                 $this->datos[] = $filas;                
             }
         }else {
-            echo " No se puede realizar la consulta";
+            echo " No se puede realizar la consulta <br>";
+            var_dump($query);
             exit;
         }
         return $this->datos;
