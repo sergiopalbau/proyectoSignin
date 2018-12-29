@@ -10,6 +10,9 @@ class Acceso extends ModeloBase {
     private $email;
     private $telefono;
     private $id_explotacion3;
+    //-----------------------------
+    public  $explotaciones = array();
+    public $roles = array ();
 
     
    // '{$this->id_acceso}', '{$this->id_rol3}', '{$this->nombre}', '{$this->password}', '{$this->email}', '{$this->telefono}', '{$this->id_explotacion3}'
