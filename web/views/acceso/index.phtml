@@ -38,10 +38,13 @@
                             </td>
                              <td>
                                  <div class="row">
-                                     <div class="col-6">
+                                     <div class="col-4">
+                                        <a href="<?php echo base_url."sadmin.php/?controller=Acceso&action=nuevoeditar&dato=".$dato['id_acceso'] ?>" class="btn btn-primary btn-block">Ver</a>
+                                    </div> 
+                                     <div class="col-4">
                                         <a href="<?php echo base_url."sadmin.php/?controller=Acceso&action=nuevoeditar&dato=".$dato['id_acceso'] ?>" class="btn btn-warning btn-block">Editar</a>
                                     </div>
-                                    <div class="col-6">  
+                                    <div class="col-4">  
                                       <a id="<?php echo $dato['id_acceso'];?>" href="<?php echo base_url."sadmin.php/?controller=Acceso&action=eliminar&dato=".$dato['id_acceso'] ?>" class="btn btn-danger btn-block">Eliminar</a>
                                     </div>
                                  </div>
