@@ -39,7 +39,7 @@
 		    <a class="nav-link <?php echo $menu['explotaciones'] ?>" href="<?php echo base_url."sadmin.php/?controller=Explotacion&action=index"?>">Explotaciones</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link <?php echo $menu['acceso'] ?>" href="#">Acceso web</a>
+		    <a class="nav-link <?php echo $menu['acceso'] ?>" href="<?php echo base_url."sadmin.php/?controller=Acceso&action=index"?>">Acceso web</a>
 		  </li>
 		   <li class="nav-item">
 		    <a class="nav-link <?php echo $menu['registro'] ?>" href="#">Registro Visitas</a>
