@@ -1,0 +1,73 @@
+<?php
+    //nuevo.phtml -- acceso
+
+    $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "",
+      "acceso"        =>  "active",
+      "registro"      =>  ""
+    ];
+    var_dump($consulta);
+    include 'views/layaout/header.php';
+ ?>
+
+ <div class="container">
+    <br><br><br>
+    <div class="row">
+    <h1> ¿Ésta seguro de eliminar el  registro ?</h1>
+    </div>
+    <br>
+    <div class="row">
+        <form action="<?php echo base_url . "sadmin.php/?controller=Acceso&action=delete" ?>" method="POST" class="col needs-validation">
+            <div class="form-group row">
+
+                <label for="nombre" class="col-sm-2 col-form-label text-center">Nombre</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="nombre" id="nombre" pattern="^[a-zA-Z ]*$" title="Introduzca solo letras" value="<?php echo $consulta['nombre'];?>" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label text-center">Password</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="password" name="password" id="password" value="eso es trampa :)"readonly="">
+                </div>
+           
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label text-center">Email</label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="email" name="email" id="email" value="<?php echo $consulta['email'];?>" readonly>
+                </div>
+            
+                <label for="telefono" class="col-sm-2 col-form-label text-center">Telefono</label>
+                <div class="col-sm-4">
+                    <input class="form-control" type="text" name="telefono" id="telefono" pattern="^(\+34|0034|34)?[6|7|9][0-9]{8}$" title="Solo se acepta telefonos de formato español. Sin espacios, ni caracteres especiales." value="<?php echo $consulta['telefono'];?>" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="explotacion" class="col-sm-2 col-form-label text-center">Explotación</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control col-sm-12" value="<?php echo $consulta['id_explotacion3'];?>" readonly>
+                </div>
+                
+                    
+                <label for="explotacion" class="col-sm-2 col-form-label text-center">Rol</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control col-sm-12" value="<?php echo $roles[$consulta['id_rol3']]['nombre'];?>" readonly>
+                </div>
+                    
+                </div>
+            </div>
+                <input type="hidden" id="id_acceso" name="id_acceso" value = "<?php echo $consulta['id_acceso'];?>">
+            <br><br>
+                <button type="submit" class="btn btn-danger col-1">Eliminar</button>
+                <a href="<?php echo base_url."sadmin.php/?controller=Acceso&action=index" ?>" class="btn btn-secondary col-1">Volver</a>
+           
+        </form>
+    </div>
+</div>    
+
+
+
+
+<?php  require_once 'views/layaout/footer.php';   ?>
