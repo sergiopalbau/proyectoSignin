@@ -93,11 +93,15 @@ class Acceso extends ModeloBase {
      */
     function edit ()
     {
-        $sql= "UPDATE acceso SET id_acceso = '{$this->id_acceso}', id_rol3 = '{$this->id_rol3}', nombre ='{$this->nombre}', password ='{$this->password}', email= '{$this->email}', telefono ='{$this->telefono}', id_explotacion3 = '{$this->id_explotacion3}' WHERE id_acceso = '{$this->id_acceso}'";
-        $query=$this->db->query($sql);
+        $sql= "UPDATE acceso SET id_acceso = '{$this->id_acceso}' , id_rol3 = '{$this->id_rol3}' , nombre ='{$this->nombre}' , password ='{$this->password}' , email= '{$this->email}', telefono ='{$this->telefono}', id_explotacion3 = '{$this->id_explotacion3}' WHERE id_acceso = '{$this->id_acceso}'";
+        
         echo  $sql;
+       
+        $query=$this->db->query($sql);
+       
         return $query;
     }
+
     /**
      * borra el elemento objeto.
      * @return boolean
