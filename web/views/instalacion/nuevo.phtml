@@ -1,0 +1,56 @@
+<?php
+    //nuevo.phtml -- explotacion
+    //var_dump($consulta);
+    $id = (isset($consulta))? $consulta['id_instalacion'] : "";
+    $explotacion = (isset($consulta))? $consulta['id_explotacion2'] : "";
+    $nombre = (isset($consulta))? $consulta['nombre'] : "";
+    $funcion =  (isset($consulta))? "Editar" : "Añadir";
+    $accion =  (isset($consulta))? "edit" : "add";
+    $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "active",
+      "acceso"        =>  "",
+      "registro"      =>  ""
+    ];
+    
+    $menu2 = [
+      "explotaciones" =>  "",
+      "instalaciones" =>  "active",
+      "operarios"     =>  ""
+    ];
+    include 'views/layaout/header.php';
+    require_once 'views/layaout/nav.php';
+ ?>
+<div class="container">
+    <br><br><br>
+    
+    <div class="row">
+    <h1><?php echo $funcion ?> Instalación</h1>
+    </div>
+    <br>
+    <div class="row">
+        <form action="<?php echo base_url . "sadmin.php/?controller=Instalacion&action=".$accion; ?>" method="POST" class="col">
+            <div class="form-group">
+                <label for="id">Introduzca Nombre Instalación</label>
+                <input class="form-control" type="text" name="nombre" id="nombre" value ="<?php echo $nombre ;?>" required>
+            </div>
+            <div class="form-inline">
+                           
+                    <select class="custom-select col-sm-12 " id="explotacion"  name="explotacion" required>
+                        <option value="" >Elija una explotacion.</option>
+                         <?php foreach ($explotaciones as $exp){ ?>
+                            <option <?php if ($explotacion == $exp['id_explotacion']) {echo "selected"; };?> value="<?php echo $exp['id_explotacion']?>"> <?php echo $exp['id_explotacion']." - ".$exp['municipio'] ?></option>
+                        <?php } ?>
+                    </select>
+                
+                
+            </div>
+            <input type="hidden" id="id_instalacion" name="id_instalacion" value = "<?php echo $id ?>">
+            <br><br>
+                <button type="submit" class="btn btn-success col-1"><?php echo $funcion ?></button>
+                <a href="<?php echo base_url."sadmin.php/?controller=Instalacion&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
+           
+        </form>
+    </div>
+</div>    
+<?php  require_once 'views/layaout/footer.php';   ?>
