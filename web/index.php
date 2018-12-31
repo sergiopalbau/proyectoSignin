@@ -1,7 +1,7 @@
 <?php
 session_start();
 $msg = (isset($_SESSION['msg']))? $_SESSION['msg'] : "";
-var_dump($_SESSION);
+//var_dump($_SESSION);
 require 'config/parameters.php'
 
 ?>
