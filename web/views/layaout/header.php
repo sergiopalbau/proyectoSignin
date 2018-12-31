@@ -35,16 +35,16 @@
 		  <li class="nav-item">
 		    <a class="nav-link <?php echo $menu['inicio'] ?>" href="<?php echo base_url."sadmin.php/?controller=Login&action=index"?>">Inicio</a>
 		  </li>
-		  <li class="nav-item">
+		 <li class="nav-item">
 		    <a class="nav-link <?php echo $menu['explotaciones'] ?>" href="<?php echo base_url."sadmin.php/?controller=Explotacion&action=index"?>">Explotaciones</a>
-		  </li>
+		  </li> 
 		  <li class="nav-item">
 		    <a class="nav-link <?php echo $menu['acceso'] ?>" href="<?php echo base_url."sadmin.php/?controller=Acceso&action=index"?>">Acceso web</a>
 		  </li>
 		   <li class="nav-item">
-		    <a class="nav-link <?php echo $menu['registro'] ?>" href="#">Registro Visitas</a>
+		    <a class="nav-link <?php echo $menu['registro'] ?>" href="<?php echo base_url."sadmin.php/?controller=Registro&action=index"?>">Registro Visitas</a>
 		  </li>
-                </ul>
+        </ul>
 	</div>
 	</div>
 </div>
