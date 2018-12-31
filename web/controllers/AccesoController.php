@@ -80,7 +80,7 @@ class AccesoController {
     
     // abrir ventana editar...
     function ver () {
-        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+        if (isset($_GET['dato']) ){
             include_once 'models/Acceso.php';
             $acceso = new Acceso;   
             $acceso->setId_acceso ($_GET['dato']);
@@ -116,7 +116,7 @@ class AccesoController {
 
     // abrir ventana editar...
     function editar () {
-        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+        if ( isset($_GET['dato']) ){
             include_once 'models/Acceso.php';
             $acceso = new Acceso;   
             $acceso->setId_acceso ($_GET['dato']);
@@ -163,7 +163,7 @@ class AccesoController {
     }
     
     function eliminar () {
-        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+        if ( isset($_GET['dato']) ){
            include_once 'models/Acceso.php';
             $acceso = new Acceso;   
             $acceso->setId_acceso ($_GET['dato']);
