@@ -42,7 +42,7 @@ class ExplotacionController {
     
     // abrir ventana editar...
     function nuevoeditar () {
-        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+        if ( isset($_GET['dato']) ){
             include_once 'models/Explotacion.php';
             $explotacion = new Explotacion;   
             $explotacion->setId ($_GET['dato']);
@@ -75,7 +75,7 @@ class ExplotacionController {
     }
     
     function eliminar () {
-        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+        if ( isset($_GET['dato']) ){
             include_once 'models/Explotacion.php';
             $explotacion = new Explotacion;   
             $explotacion->setId ($_GET['dato']);
