@@ -13,15 +13,18 @@ class ModeloBase {
         unset($this->datos);
         $query = $this->db->query ("SELECT * FROM $tabla");
         
-      
-        if ($query)
+       // var_dump($query);
+        if ($query && $query->num_rows !=0)
         {
             while ($filas= $query->fetch_assoc()){
                 $this->datos[] = $filas;                
             }
         }else {
             echo " No se puede realizar la consulta <br>";
-            var_dump($query);
+            if ( $query->num_rows ===0)
+            {
+                echo "<h1>Tabla Vacia.<h1>";
+            }
             exit;
         }
         return $this->datos;
