@@ -19,6 +19,16 @@
                  $_SESSION['rol'] = "superAdmin"; 
              } elseif ($datos['id_rol3'] == 1) {
                  $_SESSION['rol'] = "admin";
+             } elseif ($datos['id_rol3'] == 2){
+              $_SESSION['msg'] = "usuario sin acceso a la web";
+              $cad = 'Location: '. base_url . 'sadmin.php/?controller=Logout&action=logout';
+              echo $cad;
+              var_dump($_SESSION);
+
+             header ("location:". base_url);
+             exit;
+
+ 
              }
                  $_SESSION['login']= true;
                  $_SESSION['nombre'] = $datos['nombre'];
