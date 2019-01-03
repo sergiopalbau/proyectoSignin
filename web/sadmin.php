@@ -11,6 +11,11 @@
     /*prueba git */
     if (isset($_GET['controller']))
     {
+        if (!isset ($_SESSION['login']) && ($_GET['controller'] !='Login')){
+            $_SESSION['msg']='Espacio Reservado, ingrese credenciales';
+             header ("location:". base_url);
+        }
+
         $nombre_controlador = $_GET ['controller'].'Controller';
     }else{
         echo " Lo que buscas no se encuentra aqui!!!";
