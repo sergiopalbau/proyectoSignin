@@ -30,9 +30,11 @@
 
  
              }
+                  $_SESSION['msg'] = "";
                  $_SESSION['login']= true;
                  $_SESSION['nombre'] = $datos['nombre'];
-                 $_SESSION['explotacion'] = $datos['explotacion'];
+                 $_SESSION['explotacion'] = $datos['id_explotacion3'];
+                 
              header("Location: $url2"."/?controller=Login&action=index");
            }else{
               $_SESSION['msg'] = "Credenciales no validos.";
