@@ -127,5 +127,27 @@ class Acceso extends ModeloBase {
         return $this->datos;
     }
 
+    public function conseguirTodosExp (){
+        $query = $this->db->query ("SELECT * FROM acceso WHERE id_explotacion3 = '{$_SESSION['explotacion']}'");
+        //echo "SELECT * FROM acceso WHERE id_explotacion3 = '{$_SESSION['explotacion']}'";
+        //exit;           
+        unset($datos);
+       if ($query && $query->num_rows !=0)
+        {
+            while ($filas= $query->fetch_assoc()){
+                $this->datos[] = $filas;                
+            }
+        }else {
+            echo " No se puede realizar la consulta <br>";
+            if ( $query->num_rows ===0)
+            {
+                echo "<h1>Tabla Vacia.<h1>";
+            }
+            exit;
+        }
+        return $this->datos;
+    }
+
+
 }// fin clase
 
