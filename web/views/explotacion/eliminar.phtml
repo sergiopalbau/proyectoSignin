@@ -7,8 +7,13 @@
     ];
     $id = (isset($consulta))? $consulta['id_explotacion'] : "";
     $municipio = (isset($consulta))? $consulta['municipio'] : "";
-        
+     $menu2 = [
+      "explotaciones" =>  "active",
+      "instalaciones" =>  "",
+      "operarios"     =>  ""
+    ];   
     require_once 'views/layaout/header.php';
+     require_once 'views/layaout/nav.php';
  ?>
 <div class="container">
     <br><br><br>

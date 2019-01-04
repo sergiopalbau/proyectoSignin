@@ -1,10 +1,11 @@
 <?php
 require_once 'ModeloBase.php';
-class Explotacion extends ModeloBase {
+class Instalacion extends ModeloBase {
 
     private $id;
-    private $municipio;
-    private $idAntigua; 
+    private $instalacion;
+    private $id_explotacion;
+  
     
      public function __construct() {
         parent::__construct();
@@ -15,27 +16,34 @@ class Explotacion extends ModeloBase {
         return $this->id;
     }
 
-    function getMunicipio() {
-        return $this->municipio;
+    function getInstalacion() {
+        return $this->instalacion;
+    }
+
+    function getId_explotacion (){
+        return $this->id_explotacion;
     }
 
     function setId($id) {
         $this->id = $id;
     }
-    function setIdAntigua ($id){
-        $this->id = $id;
 
+    function setInstalacion($instalacion) {
+        $this->instalacion = $instalacion;
     }
 
-    function setMunicipio($municipio) {
-        $this->municipio = $municipio;
+    function setId_explotacion ($explotacion)
+    {
+        $this->id_explotacion = $explotacion;
     }
     /**
      * añade el objeto a la bbdd
      * @return boolean
      */
     function add() {
-        $sql = "INSERT INTO explotacion VALUES ('{$this->id}','{$this->municipio}')";
+
+        $sql = "INSERT INTO instalacion VALUES ('{$this->id}','{$this->instalacion}','{$this->id_explotacion}')";
+        echo $sql;
         $query= $this->db->query($sql);
         return $query;
     }
@@ -45,9 +53,10 @@ class Explotacion extends ModeloBase {
      */
     function edit ()
     {
-        $sql= "UPDATE explotacion SET id_explotacion = '{$this->id}', municipio = '{$this->municipio}' WHERE id_explotacion = '{$this->idAntigua}'";
+        $sql= "UPDATE instalacion SET id_instalacion = '{$this->id}', nombre = '{$this->instalacion}', id_explotacion2 = '{$this->id_explotacion}' WHERE id_instalacion = '{$this->id}'";
+        echo $sql;
         $query=$this->db->query($sql);
-        echo  $sql;
+        var_dump($this->db);
         return $query;
     }
     /**
@@ -55,7 +64,7 @@ class Explotacion extends ModeloBase {
      * @return boolean
      */
     function delete (){
-        $sql= "DELETE FROM explotacion WHERE id_explotacion = '{$this->id}'";
+        $sql= "DELETE FROM instalacion WHERE id_instalacion = '{$this->id}'";
         $query=$this->db->query($sql);
         echo  $sql;
         return $query;
@@ -66,7 +75,7 @@ class Explotacion extends ModeloBase {
      * @return array()
      */
     public function conseguirId (){
-        $query = $this->db->query ("SELECT * FROM explotacion WHERE id_explotacion = '{$this->id}'");
+        $query = $this->db->query ("SELECT * FROM instalacion WHERE id_instalacion = '{$this->id}'");
         if ($query->num_rows === 1)
         {
             $this->datos= $query->fetch_assoc();

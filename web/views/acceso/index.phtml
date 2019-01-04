@@ -1,0 +1,89 @@
+<?php
+     $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "",
+      "acceso"        =>  "active",
+      "registro"      =>  ""
+    ];
+
+   
+       require_once 'views/layaout/header.php';
+ ?>
+<div class="container">
+    <br><br><br>  
+    <div class="row">
+      <h1>Usuarios con acceso a la web.</h1>
+    </div> 
+        <div class="row my-2">
+            <div class="col">
+                <table id="tablon" class=" table table-striped table-bordered table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>NOMBRE</th>
+                            <th>EXPLOTACION</th> 
+                            <th>ROL<th>   
+                        </tr>
+                    </thead>
+                    <br><br>
+                    <tbody>
+                        <?php foreach($datos as $dato){ 
+                          $estado = ($dato['id_rol3']==0 && $_SESSION['rol']=='admin')? 'btn-secondary disabled': 'btn-warning';
+                          $estado2 = ($dato['id_rol3']==0 && $_SESSION['rol']=='admin')? 'btn-secondary disabled': 'btn-danger';
+                          
+                        ?>  
+                        <tr>
+                            
+                             <td>
+                               <?php echo $dato['nombre']; ?>
+                            </td>
+                            <td>
+                               <?php echo $dato['id_explotacion3']; ?>
+                            </td>
+                            <td>
+                               <?php 
+                               $num = $dato['id_rol3'];
+                               echo $roles[$dato['id_rol3']]['nombre']; ?>
+                            </td>
+                             <td>
+                                 <div class="row">
+                                     <div class="col-4">
+                                        <a href="<?php echo base_url."sadmin.php/?controller=Acceso&action=ver&dato=".$dato['id_acceso'] ?>" class="btn btn-primary btn-block">Ver</a>
+                                    </div> 
+                                     <div class="col-4">
+                                        <a href="<?php echo base_url."sadmin.php/?controller=Acceso&action=editar&dato=".$dato['id_acceso'] ?>" class="btn btn-block <?php echo $estado; ?>">Editar</a>
+                                    </div>
+                                    <div class="col-4">  
+                                      <a id="<?php echo $dato['id_acceso'];?>" href="<?php echo base_url."sadmin.php/?controller=Acceso&action=eliminar&dato=".$dato['id_acceso'] ?>" class="btn btn-block  <?php echo $estado2; ?>">Eliminar</a>
+                                    </div>
+                                 </div>
+                            </td>
+                        </tr>
+                              
+                           <?php }  ?>
+                        
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="row mt-3">
+            <div class="col">
+                <a href="<?php echo base_url."sadmin.php/?controller=Acceso&action=nuevo" ?>" class="btn btn-success">Añadir</a>
+            </div>
+        </div>
+</div>
+
+<br>
+<br>
+<br>
+
+ <!-- datatables -->
+<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/css/dataTables.bootstrap4.min.css"/>
+<script type="text/javascript" src="../assets/js/dataTables.min.js"></script> 
+<script type="text/javascript" src="../assets/js/dataTables.bootstrap4.min.js"></script>
+   
+<?php
+    require_once 'views/layaout/footer.php';
+ ?>

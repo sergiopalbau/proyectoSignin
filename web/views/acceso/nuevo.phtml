@@ -1,0 +1,82 @@
+<?php
+    //nuevo.phtml -- acceso
+
+    $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "",
+      "acceso"        =>  "active",
+      "registro"      =>  ""
+    ];
+    
+    include 'views/layaout/header.php';
+ ?>
+
+ <div class="container">
+    <br><br><br>
+    <div class="row">
+    <h1>Añadir Acceso a SignIn</h1>
+    </div>
+    <br>
+    <div class="row">
+        <form action="<?php echo base_url . "sadmin.php/?controller=Acceso&action=add" ?>" method="POST" class="col needs-validation">
+            <div class="form-group row">
+
+                <label for="nombre" class="col-sm-2 col-form-label text-center">Nombre</label>
+                <div class="col-sm-10">
+                	<input class="form-control" type="text" name="nombre" id="nombre" pattern="^[a-zA-Z ]*$" title="Introduzca solo letras" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label text-center">Password</label>
+                <div class="col-sm-10">
+                	<input class="form-control" type="text" name="password" id="password" required>
+                </div>
+           
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label text-center">Email</label>
+                <div class="col-sm-4">
+                	<input class="form-control" type="email" name="email" id="email" required>
+                </div>
+            
+                <label for="telefono" class="col-sm-2 col-form-label text-center">Telefono</label>
+                <div class="col-sm-4">
+                	<input class="form-control" type="text" name="telefono" id="telefono" pattern="^(\+34|0034|34)?[6|7|9][0-9]{8}$" title="Solo se acepta telefonos de formato español. Sin espacios, ni caracteres especiales."required>
+                </div>
+            </div>
+            <div class="form-group row">
+        		<label for="explotacion" class="col-sm-2 col-form-label text-center">Explotación</label>
+        		<div class="col-sm-4">
+        			<select class="custom-select col-sm-12 " id="explotacion"  name="explotacion" required>
+					    <option value="" selected="">Elija una explotacion.</option>
+						 <?php foreach ($explotaciones as $exp){ ?>
+						 	<option value="<?php echo $exp['id_explotacion']?>"> <?php echo $exp['id_explotacion']." - ".$exp['municipio'] ?></option>
+					    <?php } ?>
+			 		</select>
+        		</div>
+                
+                	
+        		<label for="explotacion" class="col-sm-2 col-form-label text-center">Rol</label>
+        		<div class="col-sm-4">
+        			<select class="custom-select  col-sm-12" id="rol" name="rol" required>
+        				<option value="" selected="">Elija un ROL</option>
+        				<?php foreach ($roles as $r){ ?>
+						 	<option value="<?php echo $r['id_rol'];?>"> <?php echo $r['nombre']; ?></option>
+					    <?php } ?>
+        			 </select>
+        		</div>
+                	
+                </div>
+            </div>
+            <br><br>
+                <button type="submit" class="btn btn-success col-1">Añadir</button>
+                <a href="<?php echo base_url."sadmin.php/?controller=Acceso&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
+           
+        </form>
+    </div>
+</div>    
+
+
+
+
+<?php  require_once 'views/layaout/footer.php';   ?>

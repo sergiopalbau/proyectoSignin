@@ -42,7 +42,7 @@ class ExplotacionController {
     
     // abrir ventana editar...
     function nuevoeditar () {
-        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+        if ( isset($_GET['dato']) ){
             include_once 'models/Explotacion.php';
             $explotacion = new Explotacion;   
             $explotacion->setId ($_GET['dato']);
@@ -57,11 +57,14 @@ class ExplotacionController {
     function edit (){
         if ($_POST){
             var_dump ($_POST);
+
             include_once 'models/Explotacion.php';
             $explotacion = new Explotacion;   
             $explotacion->setId ($_POST['id_explotacion']);
             $explotacion->setMunicipio($_POST['municipio']);
+            $explotacion->setIdAntigua($_POST['idAntigua']);
             if ($explotacion->edit()){
+                var_dump($explotacion);exit;
                 header ("location: ?controller=explotacion&action=index");
             }else{
                 echo "no se pudo completar la operacion.";
@@ -75,7 +78,7 @@ class ExplotacionController {
     }
     
     function eliminar () {
-        if ( (($_SESSION['rol'] == 'superAdmin') || ($_SESSION['rol'] == 'Admin')) && isset($_GET['dato']) ){
+        if ( isset($_GET['dato']) ){
             include_once 'models/Explotacion.php';
             $explotacion = new Explotacion;   
             $explotacion->setId ($_GET['dato']);

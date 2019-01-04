@@ -19,10 +19,22 @@
                  $_SESSION['rol'] = "superAdmin"; 
              } elseif ($datos['id_rol3'] == 1) {
                  $_SESSION['rol'] = "admin";
+             } elseif ($datos['id_rol3'] == 2){
+              $_SESSION['msg'] = "usuario sin acceso a la web";
+              $cad = 'Location: '. base_url . 'sadmin.php/?controller=Logout&action=logout';
+              echo $cad;
+              var_dump($_SESSION);
+
+             header ("location:". base_url);
+             exit;
+
+ 
              }
+                  $_SESSION['msg'] = "";
                  $_SESSION['login']= true;
                  $_SESSION['nombre'] = $datos['nombre'];
-                 $_SESSION['explotacion'] = $datos['explotacion'];
+                 $_SESSION['explotacion'] = $datos['id_explotacion3'];
+                 
              header("Location: $url2"."/?controller=Login&action=index");
            }else{
               $_SESSION['msg'] = "Credenciales no validos.";

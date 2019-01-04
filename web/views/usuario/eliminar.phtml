@@ -1,0 +1,51 @@
+<?php
+    //nuevo.phtml -- explotacion
+   // var_dump($consulta);
+    $id = (isset($consulta))? $consulta['id_usuario'] : "";
+    $explotacion = (isset($consulta))? $consulta['id_explotacion2'] : "";
+    $nombre = (isset($consulta))? $consulta['nombre'] : "";
+    $funcion =  (isset($consulta))? "Editar" : "Añadir";
+    $accion =  (isset($consulta))? "edit" : "add";
+    $menu = [
+      "inicio"        =>  "",
+      "explotaciones" =>  "active",
+      "acceso"        =>  "",
+      "registro"      =>  ""
+    ];
+    $menu2 = [
+      "explotaciones" =>  "",
+      "instalaciones" =>  "",
+      "operarios"     =>  "active"
+    ];
+    
+    include 'views/layaout/header.php';
+    include 'views/layaout/nav.php';
+ ?>
+<div class="container">
+    <br><br><br>
+    
+    <div class="row">
+    <h1><?php echo $funcion ?> Instalación</h1>
+    </div>
+    <br>
+    <div class="row">
+        <form action="<?php echo base_url . "sadmin.php/?controller=Usuario&action=delete"; ?>" method="POST" class="col">
+            <div class="form-group">
+                <label for="id">Introduzca Nombre Instalación</label>
+                <input class="form-control" type="text" name="nombre" id="nombre" value ="<?php echo $nombre ;?>" readonly>
+            </div>
+            <div class="form-group">
+                           
+                    <input class="form-control" type="text" name="explotacion" id="explotacion" value ="<?php echo $explotacion ;?>" readonly>
+                
+                
+            </div>
+            <input type="hidden" id="id_instalacion" name="id_instalacion" value = "<?php echo $id ?>">
+            <br><br>
+                <button type="submit" class="btn btn-danger col-1">Eliminar</button>
+                <a href="<?php echo base_url."sadmin.php/?controller=Usuario&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
+           
+        </form>
+    </div>
+</div>    
+<?php  require_once 'views/layaout/footer.php';   ?>

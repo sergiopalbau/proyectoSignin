@@ -5,11 +5,12 @@
       "acceso"        =>  "",
       "registro"      =>  ""
     ];
-    $menu2 = [
-      "explotaciones" =>  "active",
+     $menu2 = [
+      "explotaciones" =>  "",
       "instalaciones" =>  "",
-      "operarios"     =>  ""
+      "operarios"     =>  "active"
     ];
+    //var_dump($datos);
      require_once 'views/layaout/header.php';
      require_once 'views/layaout/nav.php';
  ?>
@@ -18,16 +19,17 @@
 <div class="container">
  
 
-    <br><br><br>  
-        <h1>Listado de Explotaciones.</h1> 
+    <br><br><br>   
+    <h1>Listado de Operarios.</h1>
         <div class="row my-2">
             <div class="col">
                 <table id="tablon" class=" table table-striped table-bordered table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>EXPLOTACION</th>
-                            <th>OPCIONES</th>    
+                            <th>EXPLOTACION</th>  
+                            <th>NOMBRE</th> 
+                            <th>OPCIONES</th> 
                         </tr>
                     </thead>
                     <br><br>
@@ -35,18 +37,21 @@
                         <?php foreach($datos as $dato){ ?>  
                         <tr>
                             <td>
-                               <?php echo $dato['id_explotacion']; ?>
+                               <?php echo $dato['id_usuario']."\n"; ?>
                             </td>
                              <td>
-                               <?php echo $dato['municipio']; ?>
+                               <?php echo $dato['id_explotacion2']."\n"; ?>
+                            </td>
+                             <td>
+                               <?php echo $dato['nombre']."\n"; ?>
                             </td>
                              <td>
                                  <div class="row">
                                      <div class="col-6">
-                                        <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevoeditar&dato=".$dato['id_explotacion'] ?>" class="btn btn-warning btn-block">Editar</a>
+                                        <a href="<?php echo base_url."sadmin.php/?controller=Usuario&action=editar&dato=".$dato['id_usuario'] ?>" class="btn btn-warning btn-block">Editar</a>
                                     </div>
                                     <div class="col-6">  
-                                      <a id="<?php echo $dato['id_explotacion'];?>" href="<?php echo base_url."sadmin.php/?controller=explotacion&action=eliminar&dato=".$dato['id_explotacion'] ?>" class="btn btn-danger btn-block">Eliminar</a>
+                                      <a id="<?php echo $dato['id_usuario'];?>" href="<?php echo base_url."sadmin.php/?controller=Usuario&action=eliminar&dato=".$dato['id_usuario'] ?>" class="btn btn-danger btn-block">Eliminar</a>
                                     </div>
                                  </div>
                             </td>
@@ -62,7 +67,7 @@
         <br>
         <div class="row mt-3">
             <div class="col">
-                <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=nuevo" ?>" class="btn btn-success">Añadir</a>
+                <a href="<?php echo base_url."sadmin.php/?controller=Usuario&action=nuevo" ?>" class="btn btn-success">Añadir</a>
             </div>
         </div>
 </div>
