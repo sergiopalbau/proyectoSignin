@@ -35,8 +35,10 @@
                 <label for="id">Introduzca Municipio</label>
                 <input class="form-control" type="text" name="municipio" id="municipio" value ="<?php echo $municipio ;?>" required>
             </div>
+
+            <input type="hidden" name="idAntigua" id="idAntigua" value="<?php echo $id; ?>">
             <br><br>
-                <button type="submit" class="btn btn-success col-1"><?php echo $funcion ?></button>
+                <button type="submit" class="btn btn-success col-1"><?php echo $funcion; ?></button>
                 <a href="<?php echo base_url."sadmin.php/?controller=explotacion&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
            
         </form>

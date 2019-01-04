@@ -57,11 +57,14 @@ class ExplotacionController {
     function edit (){
         if ($_POST){
             var_dump ($_POST);
+
             include_once 'models/Explotacion.php';
             $explotacion = new Explotacion;   
             $explotacion->setId ($_POST['id_explotacion']);
             $explotacion->setMunicipio($_POST['municipio']);
+            $explotacion->setIdAntigua($_POST['idAntigua']);
             if ($explotacion->edit()){
+                var_dump($explotacion);exit;
                 header ("location: ?controller=explotacion&action=index");
             }else{
                 echo "no se pudo completar la operacion.";

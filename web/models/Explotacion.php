@@ -4,7 +4,7 @@ class Explotacion extends ModeloBase {
 
     private $id;
     private $municipio;
-  
+    private $idAntigua; 
     
      public function __construct() {
         parent::__construct();
@@ -21,6 +21,10 @@ class Explotacion extends ModeloBase {
 
     function setId($id) {
         $this->id = $id;
+    }
+    function setIdAntigua ($id){
+        $this->id = $id;
+
     }
 
     function setMunicipio($municipio) {
@@ -41,7 +45,7 @@ class Explotacion extends ModeloBase {
      */
     function edit ()
     {
-        $sql= "UPDATE explotacion SET id_explotacion = '{$this->id}', municipio = '{$this->municipio}' WHERE id_explotacion = '{$this->id}'";
+        $sql= "UPDATE explotacion SET id_explotacion = '{$this->id}', municipio = '{$this->municipio}' WHERE id_explotacion = '{$this->idAntigua}'";
         $query=$this->db->query($sql);
         echo  $sql;
         return $query;
