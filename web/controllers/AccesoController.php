@@ -25,7 +25,11 @@ class AccesoController {
        require 'models/Acceso.php';
         
         $acceso = new Acceso();
-        $datos =$acceso->conseguirTodos ('acceso');
+        if ($_SESSION['rol']=='superAdmin'){
+            $datos =$acceso->conseguirTodos ('acceso');
+        }else{
+            $datos =$acceso->conseguirTodosExp ();
+        }
         $roles = $acceso->conseguirTodos ('rol');
         $acceso->db->close();     
         require_once 'views/acceso/index.phtml';
@@ -41,6 +45,18 @@ class AccesoController {
         $acceso->db->close();    
         // var_dump($explotaciones);
         // var_dump($roles);
+        if ($_SESSION['rol'] =='admin'){
+
+                //recuperamos solo la explotacion a la que pertenece.
+                include_once 'models/Explotacion.php';
+                $exp = new Explotacion;
+                $exp->setId($_SESSION['explotacion']);
+                unset($explotaciones);
+                $explotaciones [] = $exp->conseguirId();
+                // podra dar permisos de roles de su mismo rango o inferior.
+                unset ($roles[0]);            
+            }
+                
         require_once 'views/acceso/nuevo.phtml';
     }
 
@@ -118,12 +134,36 @@ class AccesoController {
     function editar () {
         if ( isset($_GET['dato']) ){
             include_once 'models/Acceso.php';
+
+
             $acceso = new Acceso;   
             $acceso->setId_acceso ($_GET['dato']);
             $consulta= $acceso->conseguirId();
-
+            // var_dump($consulta);
             $explotaciones =$acceso->conseguirTodos ('explotacion');
             $roles = $acceso->conseguirTodos ('rol');
+            if ($_SESSION['rol'] =='admin'){
+                //si alguin intenta entrar por parametros al id de un superAdmin le mandamos al index
+                if ($consulta['id_rol3'] == 0){
+                    header ("location: ?controller=Acceso&action=index");
+                    echo "donde vas pajaro??";
+                    exit;
+                }
+
+                //recuperamos solo la explotacion a la que pertenece.
+                include_once 'models/Explotacion.php';
+                $exp = new Explotacion;
+                $exp->setId($_SESSION['explotacion']);
+                unset($explotaciones);
+                $explotaciones [] = $exp->conseguirId();
+                // podra dar permisos de roles de su mismo rango o inferior.
+                unset ($roles[0]);            
+            }
+                
+            
+            //var_dump($explotaciones);
+            //var_dump($roles);
+            //exit;
 
             require_once 'views/acceso/editar.phtml';
         }else{
@@ -168,7 +208,12 @@ class AccesoController {
             $acceso = new Acceso;   
             $acceso->setId_acceso ($_GET['dato']);
             $consulta= $acceso->conseguirId();
-
+            //si alguin intenta entrar por parametros al id de un superAdmin le mandamos al index
+                if ($_SESSION['rol']=='admin' && $consulta['id_rol3'] == 0){
+                    header ("location: ?controller=Acceso&action=index");
+                    echo "donde vas pajaro??";
+                    exit;
+                }
             $explotaciones =$acceso->conseguirTodos ('explotacion');
             $roles = $acceso->conseguirTodos ('rol');
               require_once 'views/acceso/eliminar.phtml';
@@ -189,7 +234,7 @@ class AccesoController {
              }else {
                 Echo "no se pudo eliminar";
 
-                ecit;
+                exit;
              }
         }else {
             echo "Faltan datos.";
