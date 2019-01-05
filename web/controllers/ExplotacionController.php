@@ -8,7 +8,14 @@ class ExplotacionController {
         require 'models/Explotacion.php';
         
         $explotacion = new Explotacion();
-        $datos =$explotacion->conseguirTodos ('explotacion');
+        if ($_SESSION['rol']=='superAdmin') {
+             $datos =$explotacion->conseguirTodos ('explotacion');
+        }else {
+            $explotacion->setId("{$_SESSION['explotacion']}");
+            $datos[] = $explotacion->conseguirId ();
+            // var_dump($datos);
+            // exit;
+        }
         
         require_once 'views/explotacion/index.phtml';
         
@@ -59,12 +66,13 @@ class ExplotacionController {
             var_dump ($_POST);
 
             include_once 'models/Explotacion.php';
-            $explotacion = new Explotacion;   
+            $explotacion = new Explotacion; 
             $explotacion->setId ($_POST['id_explotacion']);
             $explotacion->setMunicipio($_POST['municipio']);
             $explotacion->setIdAntigua($_POST['idAntigua']);
+            //var_dump($explotacion);exit;
             if ($explotacion->edit()){
-                var_dump($explotacion);exit;
+                
                 header ("location: ?controller=explotacion&action=index");
             }else{
                 echo "no se pudo completar la operacion.";
@@ -78,6 +86,13 @@ class ExplotacionController {
     }
     
     function eliminar () {
+        if ($_SESSION['rol'] =='admin'){
+                //si alguin intenta entrar por parametros al id de un superAdmin le mandamos al index
+                
+                    header ("location: ?controller=Explotacion&action=index");
+                    echo "donde vas pajaro??";
+                    exit;
+                }
         if ( isset($_GET['dato']) ){
             include_once 'models/Explotacion.php';
             $explotacion = new Explotacion;   

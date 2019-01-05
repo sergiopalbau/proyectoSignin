@@ -23,7 +23,8 @@ class Explotacion extends ModeloBase {
         $this->id = $id;
     }
     function setIdAntigua ($id){
-        $this->id = $id;
+        $this->idAntigua = $id;
+
 
     }
 
