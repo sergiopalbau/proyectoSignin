@@ -9,7 +9,11 @@
           $url = "http://localhost/proyectoSignin/web/index.php";
           $url2 = "http://localhost/proyectoSignin/web/sadmin.php";
           include_once 'models/login.php';
+          include_once 'models/Explotacion.php';
+          
+
           $sql = "SELECT * FROM acceso WHERE email = '$email' AND password = '$pwd'";
+       
           $login = new Login();
           $resultado = $login->db->query($sql);
           $login->db->close();
@@ -30,10 +34,16 @@
 
  
              }
-                  $_SESSION['msg'] = "";
+                 $_SESSION['msg'] = "";
                  $_SESSION['login']= true;
                  $_SESSION['nombre'] = $datos['nombre'];
                  $_SESSION['explotacion'] = $datos['id_explotacion3'];
+
+                //-Conseguir nombre del municipio.
+                 $explotacion = new Explotacion;
+                 $explotacion->setId ($datos['id_explotacion3']);
+                 $municipio = $explotacion->conseguirId(); 
+                 $_SESSION['municipio'] = $municipio['municipio'];
                  
              header("Location: $url2"."/?controller=Login&action=index");
            }else{

@@ -25,7 +25,8 @@
     <br><br><br>
     
     <div class="row">
-    <h1><?php echo $funcion ?> Instalación</h1>
+    <h1>Eliminar Instalación</h1>
+    <h4 style="color:red">ATENCIÓN ESTO ELIMINARA TAMBIEN LOS DATOS ASOCIADOS COMO LOS REGISTROS EFECTUADOS </h4>
     </div>
     <br>
     <div class="row">
@@ -43,7 +44,7 @@
             <input type="hidden" id="id_instalacion" name="id_instalacion" value = "<?php echo $id ?>">
             <br><br>
                 <button type="submit" class="btn btn-danger col-1">Eliminar</button>
-                <a href="<?php echo base_url."sadmin.php/?controller=Instalacion&action=index" ?>" class="btn btn-secondary col-1">Cancelar</a>
+                <a href="<?php echo base_url."sadmin.php/?controller=Instalacion&action=index" ?>" class="btn btn-secondary col-1 mr-1">Cancelar</a>
            
         </form>
     </div>
