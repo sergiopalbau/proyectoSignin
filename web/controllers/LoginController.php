@@ -12,7 +12,7 @@
           $sql = "SELECT * FROM acceso WHERE email = '$email' AND password = '$pwd'";
           $login = new Login();
           $resultado = $login->db->query($sql);
-          $login->db->close();
+          
           if ($resultado->num_rows === 1) {
              $datos = $resultado->fetch_assoc();
              if ($datos['id_rol3'] == 0){
@@ -24,7 +24,7 @@
               $cad = 'Location: '. base_url . 'sadmin.php/?controller=Logout&action=logout';
               echo $cad;
               var_dump($_SESSION);
-
+              $login->db->close();
              header ("location:". base_url);
              exit;
 
@@ -53,6 +53,7 @@
           
            if ($_POST){
                 var_dump($_POST);
+
                 if(isset($_POST['email'])&& isset($_POST['pass']) && isset($_POST['acceder'])){
 
                     $consulta = new loginController ();
