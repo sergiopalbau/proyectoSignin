@@ -84,4 +84,20 @@ class Instalacion extends ModeloBase {
         return $this->datos;
     }
 
+    public function conseguirExplotacion ($explotacion)
+        { 
+         $query = $this->db->query ("SELECT * FROM instalacion WHERE id_explotacion2 = '{$explotacion}'");
+        if ($query->num_rows != 0 )
+        {
+             while ($filas= $query->fetch_assoc()){
+                $this->datos[] = $filas;                
+            }
+         
+        }
+
+        //var_dump($this->datos);exit;
+        return $this->datos;
+    }
+        
+
 }// fin clase

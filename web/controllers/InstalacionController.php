@@ -8,7 +8,14 @@ class InstalacionController {
         require 'models/Instalacion.php';
         
         $instalacion = new Instalacion();
-        $datos =$instalacion->conseguirTodos ('instalacion');
+        if ($_SESSION['rol']=='superAdmin') {
+            $datos =$instalacion->conseguirTodos ('instalacion');
+         }else {
+            
+            $datos = $instalacion->conseguirExplotacion ($_SESSION['explotacion']);
+            //var_dump($datos);
+            // exit;
+        }
         
         require_once 'views/instalacion/index2.phtml';
         
@@ -52,7 +59,14 @@ class InstalacionController {
             $instalacion = new Instalacion;   
             $instalacion->setId ($_GET['dato']);
             $consulta= $instalacion->conseguirId();
-            $explotaciones =$instalacion->conseguirTodos ('explotacion');
+            if ($_SESSION['rol'] =='superAdmin'){
+                $explotaciones =$instalacion->conseguirTodos ('explotacion');
+            }else{
+                $explotaciones =$instalacion->conseguirTodos ('explotacion');
+                var_dump($explotaciones);
+                exit;
+            }
+            
             require_once 'views/instalacion/nuevo.phtml';
         }else{
             Echo "No tiene suficientes privilegios para llevar a cabo esta operacion";
