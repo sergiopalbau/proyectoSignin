@@ -1,13 +1,13 @@
 <?php 
 
     
-    $url = "http://localhost/proyectoSignin/web/index.php";
-    $url2 = "http://localhost/proyectoSignin/web/sadmin.php";
+//    $url = "http://localhost/proyectoSignin/web/index.php";
+  //  $url2 = "http://localhost/proyectoSignin/web/sadmin.php";
 
     class loginController {
       public function consultarIndex ($email, $pwd){
-          $url = "http://localhost/proyectoSignin/web/index.php";
-          $url2 = "http://localhost/proyectoSignin/web/sadmin.php";
+         // $url = "http://localhost/proyectoSignin/web/index.php";
+         // $url2 = "http://localhost/proyectoSignin/web/sadmin.php";
           include_once 'models/login.php';
           include_once 'models/Explotacion.php';
           
@@ -25,14 +25,12 @@
                  $_SESSION['rol'] = "admin";
              } elseif ($datos['id_rol3'] == 2){
               $_SESSION['msg'] = "usuario sin acceso a la web";
-              $cad = 'Location: '. base_url . 'sadmin.php/?controller=Logout&action=logout';
-              echo $cad;
-              var_dump($_SESSION);
+              //$cad = 'Location: '. base_url . 'sadmin.php/?controller=Logout&action=logout';
+              //echo $cad;
+             //var_dump($_SESSION);
 
              header ("location:". base_url);
              exit;
-
- 
              }
                  $_SESSION['msg'] = "";
                  $_SESSION['login']= true;
@@ -45,11 +43,11 @@
                  $municipio = $explotacion->conseguirId(); 
                  $_SESSION['municipio'] = $municipio['municipio'];
                  
-             header("Location: $url2"."/?controller=Login&action=index");
+             header("Location:".base_url."sadmin.php/?controller=Login&action=index");
            }else{
               $_SESSION['msg'] = "Credenciales no validos.";
               echo $url;
-               header("location: $url");
+               header("location:". base_url);
           }
           
       }
@@ -70,13 +68,13 @@
                 }else{
                     echo " no llega post que tocan";
                     var_dump($_POST);
-                    header("Refresh: 5; $url");
+                    header("Refresh: 5;". base_url);
                     }
                 }else {
                     if (!isset($_SESSION['login']))
                 {
                     echo " Sin post";
-                    header("Refresh: 5; $url");
+                    header("Refresh: 5;".base_url);
                 }
 
             }
