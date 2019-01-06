@@ -38,7 +38,7 @@ class ExplotacionController {
                     $explotacion->setMunicipio($_POST['municipio']);
                     
                     if ($explotacion->add()){
-                        header ("location: ?controller=explotacion&action=index");
+                        header ("location: ?controller=Explotacion&action=index");
                     }
              }else {
                 echo "no hay envio post, nada que hacer";
@@ -52,7 +52,7 @@ class ExplotacionController {
         if ( isset($_GET['dato']) ){
             include_once 'models/Explotacion.php';
             if ($_SESSION['rol']== 'admin'){
-                header ("location: ?controller=explotacion&action=index");
+                header ("location: ?controller=Explotacion&action=index");
             }
             $explotacion = new Explotacion;   
             $explotacion->setId ($_GET['dato']);
@@ -76,10 +76,10 @@ class ExplotacionController {
             //var_dump($explotacion);exit;
             if ($explotacion->edit()){
                 
-                header ("location: ?controller=explotacion&action=index");
+                header ("location: ?controller=Explotacion&action=index");
             }else{
                 echo "no se pudo completar la operacion.";
-                header ("Refresh:5; url=?controller=explotacion&action=index");
+                header ("Refresh:5; url=?controller=Explotacion&action=index");
             }
         }else {
             echo "Faltan datos.";
@@ -116,7 +116,7 @@ class ExplotacionController {
             $explotacion->setId ($_POST['id_explotacion']);
             $explotacion->setMunicipio($_POST['municipio']);
             if ($explotacion->delete()){
-                        header ("location: ?controller=explotacion&action=index");
+                        header ("location: ?controller=Explotacion&action=index");
                     }
         }else {
             echo "Faltan datos.";

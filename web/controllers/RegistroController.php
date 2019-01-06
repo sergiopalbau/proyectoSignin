@@ -35,7 +35,7 @@ class RegistroController {
                   
         //------------------------------------------------------------------
 
-        	require_once 'views/Registro/index.phtml';
+        	require_once 'views/registro/index.phtml';
         }
     
 
@@ -64,11 +64,6 @@ class RegistroController {
               
         base30_to_jpeg($datos['firma'], 'assets/firma/tmp.png');
 
-
-
-
-
-
-		require_once 'views/Registro/ver.phtml';
+		require_once 'views/registro/ver.phtml';
     }
 }// fin de clase

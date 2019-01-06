@@ -53,6 +53,7 @@ class AccesoController {
                 $exp->setId($_SESSION['explotacion']);
                 unset($explotaciones);
                 $explotaciones [] = $exp->conseguirId();
+                var_dump($explotaciones);
                 // podra dar permisos de roles de su mismo rango o inferior.
                 unset ($roles[0]);            
             }
@@ -149,6 +150,8 @@ class AccesoController {
                     echo "donde vas pajaro??";
                     exit;
                 }
+            }
+             if ($_SESSION['rol'] =='admin'){
 
                 //recuperamos solo la explotacion a la que pertenece.
                 include_once 'models/Explotacion.php';
@@ -159,12 +162,6 @@ class AccesoController {
                 // podra dar permisos de roles de su mismo rango o inferior.
                 unset ($roles[0]);            
             }
-                
-            
-            //var_dump($explotaciones);
-            //var_dump($roles);
-            //exit;
-
             require_once 'views/acceso/editar.phtml';
         }else{
             Echo "No tiene suficientes privilegios para llevar a cabo esta operacion";

@@ -86,10 +86,10 @@ class UsuarioController {
             $usuario->setId_explotacion2($_POST['explotacion']);
             $usuario->setNombre($_POST['nombre']);
             if ($usuario->edit()){
-                header ("location: ?controller=usuario&action=index");
+                header ("location: ?controller=Usuario&action=index");
             }else{
                 echo "no se pudo completar la operacion.";
-                header ("Refresh:5; url=?controller=usuario&action=index");
+                header ("Refresh:5; url=?controller=Usuario&action=index");
             }
         }else {
             echo "Faltan datos.";
@@ -123,7 +123,7 @@ class UsuarioController {
             $usuario = new Usuario;   
             $usuario->setId_usuario ($_POST['id_instalacion']);
             if ($usuario->delete()){
-                        header ("location: ?controller=usuario&action=index");
+                        header ("location: ?controller=Usuario&action=index");
                     }
         }else {
             echo "Faltan datos.";

@@ -48,7 +48,7 @@ class InstalacionController {
                     $instalacion->setId_explotacion($_POST['explotacion']);
                     
                     if ($instalacion->add()){
-                        header ("location: ?controller=instalacion&action=index");
+                        header ("location: ?controller=Instalacion&action=index");
                     }
              }else {
                 echo "no hay envio post, nada que hacer";
@@ -67,7 +67,7 @@ class InstalacionController {
             
             $consulta= $instalacion->conseguirId();
             if ($_SESSION['rol'] =='admin'&& $consulta['id_explotacion2'] != $_SESSION['explotacion']){
-                header ("location: ?controller=instalacion&action=index");
+                header ("location: ?controller=Instalacion&action=index");
             }
             
             if ($_SESSION['rol'] =='superAdmin'){
@@ -92,10 +92,10 @@ class InstalacionController {
             $instalacion->setInstalacion($_POST['nombre']);
             $instalacion->setId_explotacion($_POST['explotacion']);
             if ($instalacion->edit()){
-                header ("location: ?controller=instalacion&action=index");
+                header ("location: ?controller=Instalacion&action=index");
             }else{
                 echo "no se pudo completar la operacion.";
-                header ("Refresh:5; url=?controller=instalacion&action=index");
+                header ("Refresh:5; url=?controller=Instalacion&action=index");
             }
         }else {
             echo "Faltan datos.";
@@ -111,7 +111,7 @@ class InstalacionController {
             $instalacion->setId ($_GET['dato']);
             $consulta= $instalacion->conseguirId();
              if ($_SESSION['rol'] =='admin'&& $consulta['id_explotacion2'] != $_SESSION['explotacion']){
-                header ("location: ?controller=instalacion&action=index");
+                header ("location: ?controller=Instalacion&action=index");
             }
             $explotaciones =$instalacion->conseguirTodos ('explotacion');
               require_once 'views/instalacion/eliminar.phtml';
@@ -128,7 +128,7 @@ class InstalacionController {
             $instalacion = new Instalacion;   
             $instalacion->setId ($_POST['id_instalacion']);
             if ($instalacion->delete()){
-                        header ("location: ?controller=instalacion&action=index");
+                        header ("location: ?controller=Instalacion&action=index");
                     }
         }else {
             echo "Faltan datos.";
