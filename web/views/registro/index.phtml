@@ -16,15 +16,15 @@
   </div>  
     <br>
         
-          <form action="" class="form" method="POST">
+          <form action="?controller=Registro&action=index" class="form" method="POST">
             <div class="form-row align-items-end">
                <div class="col-4">
                    <label for=" finicio"> Fecha inicio</label>
-                    <input type="date" class="form-control" name="finicio" id="finicio">
+                    <input type="date" class="form-control" name="finicio" id="finicio" required>
                 </div>
                 <div class="col-4">
                      <label for=" ffin"> Fecha fin</label>
-                     <input type="date" class="form-control" name="ffin" id="ffin">
+                     <input type="date" class="form-control" name="ffin" id="ffin" required>
                 </div>
                 <div class="col-4">
                      <input type="submit" class="btn btn-primary btn-block mb-1" name="Filrar" id="Filtrar">
@@ -42,13 +42,12 @@
                             <th>H.FIN</th>
                             <th>NOMBRE</th>
                             <th>INSTALACION</th>
-                            <th>EXPLOTACION</th>
                             <th>Opciones</th>
                         </tr>
                     </thead>
                     <br><br>
-                    <tbody>
-                        <?php foreach($datos as $dato){ ?>  
+                    <tbody> 
+                        <?php foreach($datos as $dato){  ?>  
                         <tr>
                              <td>
                                <?php echo $dato['fecha']; ?>
@@ -63,11 +62,9 @@
                                <?php echo $dato['nombre_visita']; ?>
                             </td>
                             <td>
-                               <?php echo $dato['id_instalacion2']; ?>
+                               <?php echo $indice[$dato['id_instalacion2']]; ?>
                             </td>
-                            <td>
-                               <?php echo $dato['id_explotacion3']; ?>
-                            </td>
+                           
                             
                              <td>
                                  <div class="row">

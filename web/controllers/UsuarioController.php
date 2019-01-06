@@ -7,8 +7,12 @@ class UsuarioController {
         
         require 'models/Usuario.php';
         $usuario = new Usuario;
-        $datos =$usuario->conseguirTodos ('usuario');
-        
+
+        if ($_SESSION['rol']=='superAdmin'){
+            $datos =$usuario->conseguirTodos ('usuario');
+         }else{
+            $datos = $usuario->conseguirExplotacion($_SESSION['explotacion']);
+        }        
          require_once 'views/usuario/index.phtml'
         ;
         
@@ -18,7 +22,11 @@ class UsuarioController {
     function nuevo () {
        require 'models/Usuario.php';
        $usuario = new Usuario;
-       $explotaciones =$usuario->conseguirTodos ('explotacion');
+       if ($_SESSION['rol'] == 'superAdmin'){
+            $explotaciones =$usuario->conseguirTodos ('explotacion');
+        }else{
+             $explotaciones[] = ['id_explotacion'=>$_SESSION['explotacion'],'municipio'=>$_SESSION['municipio']];
+        }
        require_once 'views/usuario/nuevo.phtml';
 
     }
@@ -29,7 +37,6 @@ class UsuarioController {
            
             include_once 'models/Usuario.php';
             if (isset($_POST['nombre']) && isset ($_POST['explotacion'])){
-                    var_dump($_POST);
                     $usuario = new Usuario;
                     $usuario->setNombre ($_POST['nombre']);
                     $usuario->setId_explotacion2($_POST['explotacion']);
@@ -54,7 +61,15 @@ class UsuarioController {
             $usuario = new Usuario;   
             $usuario->setId_usuario ($_GET['dato']);
             $consulta= $usuario->conseguirId();
-            $explotaciones =$usuario->conseguirTodos ('explotacion');
+             if ($_SESSION['rol'] =='admin'&& $consulta['id_explotacion2'] != $_SESSION['explotacion']){
+                header ("location: ?controller=Usuario&action=index");
+            }
+           
+            if ($_SESSION['rol'] =='superAdmin'){
+                $explotaciones =$usuario->conseguirTodos ('explotacion');
+            }else{
+                 $explotaciones[] = ['id_explotacion'=>$_SESSION['explotacion'],'municipio'=>$_SESSION['municipio']];
+            }
             require_once 'views/usuario/nuevo.phtml';
         }else{
             Echo "No tiene suficientes privilegios para llevar a cabo esta operacion";
@@ -83,12 +98,16 @@ class UsuarioController {
         
     }
     
+    //abrir ventana eliminar
     function eliminar () {
         if ( isset($_GET['dato']) ){
             include_once 'models/Usuario.php';
             $usuario = new Usuario;   
             $usuario->setId_usuario ($_GET['dato']);
             $consulta= $usuario->conseguirId();
+             if ($_SESSION['rol'] =='admin'&& $consulta['id_explotacion2'] != $_SESSION['explotacion']){
+                header ("location: ?controller=Usuario&action=index");
+            }
             $explotaciones =$usuario->conseguirTodos ('explotacion');
               require_once 'views/usuario/eliminar.phtml';
         }else{
@@ -96,10 +115,10 @@ class UsuarioController {
         }
         
     }
-    
+    // llamada al model delete.
     function delete () {
         if ($_POST){
-            var_dump ($_POST);
+            
             include_once 'models/Usuario.php';
             $usuario = new Usuario;   
             $usuario->setId_usuario ($_POST['id_instalacion']);

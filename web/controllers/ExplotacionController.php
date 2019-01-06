@@ -51,6 +51,9 @@ class ExplotacionController {
     function nuevoeditar () {
         if ( isset($_GET['dato']) ){
             include_once 'models/Explotacion.php';
+            if ($_SESSION['rol']== 'admin'){
+                header ("location: ?controller=explotacion&action=index");
+            }
             $explotacion = new Explotacion;   
             $explotacion->setId ($_GET['dato']);
             $consulta= $explotacion->conseguirId();

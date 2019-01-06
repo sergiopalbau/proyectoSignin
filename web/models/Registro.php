@@ -18,14 +18,13 @@ class Registro extends ModeloBase {
     private $prl;
    
     //-----------------------------
-    public  $explotaciones = array();
+    public  $instalaciones = array();
     public $usuarios= array();
 
     
 
     public function __construct() {
         parent::__construct();
-            
     }
     
     function setId_registro ($id){
@@ -33,14 +32,16 @@ class Registro extends ModeloBase {
 
     }
 
-        /**
-     * edit -- Edita el objeto pasado.
-     * @return boolean
-     */
-   
-   function conseguirFecha (){
+    function inicializa () {
+         $this->instalaciones= $this->conseguirTodos('instalacion');
+         $this->usuarios= $this->conseguirTodos('usuario');
+         unset($this->datos);
+        
+       
+    }
 
-   }
+
+
     
     /**
      * obtiene de la bbdd el id marcado, devuelve  un array con los datos del mismo.
@@ -55,6 +56,46 @@ class Registro extends ModeloBase {
         }
         return $this->datos;
     }
+
+    public function conseguirExplotacion (){
+         unset($this->datos);
+        $query = $this->db->query ("SELECT * FROM registro WHERE id_explotacion3 = '{$_SESSION['explotacion']}'");
+        if ($query->num_rows >0)
+        {
+            while ($row = $query->fetch_assoc() )
+            $this->datos [] =$row; 
+            
+        }
+        return $this->datos;
+    }
+
+     public function conseguirExplotacionFecha ($inicio, $fin){
+        unset($this->datos);
+        $query = $this->db->query ("SELECT * FROM registro WHERE (id_explotacion3 = '{$_SESSION['explotacion']}') AND (fecha BETWEEN '{$inicio}' AND '{$fin}')");
+        if ($query->num_rows >0)
+        {
+            while ($row = $query->fetch_assoc() )
+            $this->datos [] =$row; 
+            
+        }
+        return $this->datos;
+    }
+
+
+     public function conseguirFecha ($inicio, $fin){
+         unset($this->datos);
+        $query = $this->db->query ("SELECT * FROM registro WHERE fecha BETWEEN '{$inicio}' AND '{$fin}'");
+        if ($query->num_rows >0)
+        {
+            while ($row = $query->fetch_assoc() )
+            $this->datos [] =$row; 
+            
+        }
+        return $this->datos;
+    }   
+
+
+
 
 }// fin clase
 

@@ -142,9 +142,9 @@ class AccesoController {
             // var_dump($consulta);
             $explotaciones =$acceso->conseguirTodos ('explotacion');
             $roles = $acceso->conseguirTodos ('rol');
-            if ($_SESSION['rol'] =='admin'){
+            if ($_SESSION['rol'] =='admin' && $consulta['id_rol3'] == 0){
                 //si alguin intenta entrar por parametros al id de un superAdmin le mandamos al index
-                if ($consulta['id_rol3'] == 0){
+                if ($_SESSION['rol']=="admin"){
                     header ("location: ?controller=Acceso&action=index");
                     echo "donde vas pajaro??";
                     exit;

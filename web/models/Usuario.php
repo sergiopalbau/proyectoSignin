@@ -45,7 +45,7 @@ class Usuario extends ModeloBase {
         $sql = "INSERT INTO usuario VALUES ('{$this->id_usuario}','{$this->id_explotacion2}','{$this->nombre}')";
         echo $sql;
         $query= $this->db->query($sql);
-        var_dump($this->db);
+        $this->db->close();
         return $query;
     }
     /**
@@ -57,7 +57,7 @@ class Usuario extends ModeloBase {
         $sql= "UPDATE usuario SET id_usuario = '{$this->id_usuario}', nombre = '{$this->nombre}', id_explotacion2 = '{$this->id_explotacion2}' WHERE id_usuario = '{$this->id_usuario}'";
         echo $sql;
         $query=$this->db->query($sql);
-        var_dump($this->db);
+        $this->db->close();
         return $query;
     }
     /**
@@ -67,7 +67,7 @@ class Usuario extends ModeloBase {
     function delete (){
         $sql= "DELETE FROM usuario WHERE id_usuario = '{$this->id_usuario}'";
         $query=$this->db->query($sql);
-        echo  $sql;
+        $this->db->close();
         return $query;
     }
     
@@ -82,6 +82,21 @@ class Usuario extends ModeloBase {
             $this->datos= $query->fetch_assoc();
             
         }
+        $query->close();
+        return $this->datos;
+    }
+
+     public function conseguirExplotacion ($explotacion)
+        { 
+         $query = $this->db->query ("SELECT * FROM usuario WHERE id_explotacion2 = '{$explotacion}'");
+        if ($query->num_rows != 0 )
+        {
+             while ($filas= $query->fetch_assoc()){
+                $this->datos[] = $filas;                
+            }
+         
+        }
+        $query->close();
         return $this->datos;
     }
 

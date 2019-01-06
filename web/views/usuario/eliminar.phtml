@@ -1,12 +1,10 @@
 <?php
-    //nuevo.phtml -- explotacion
-   // var_dump($consulta);
+    
+
     $id = (isset($consulta))? $consulta['id_usuario'] : "";
     $explotacion = (isset($consulta))? $consulta['id_explotacion2'] : "";
     $nombre = (isset($consulta))? $consulta['nombre'] : "";
-    $funcion =  (isset($consulta))? "Editar" : "Añadir";
-    $accion =  (isset($consulta))? "edit" : "add";
-    $menu = [
+  
       "inicio"        =>  "",
       "explotaciones" =>  "active",
       "acceso"        =>  "",
@@ -25,20 +23,19 @@
     <br><br><br>
     
     <div class="row">
-    <h1><?php echo $funcion ?> Instalación</h1>
+         <h1>Eliminar Operario.</h1>
+         <h5 style="color:red">ATENCIÓN!! ELIMINAR ESTE ELEMENTO PROVOCARA LA ELMINICACIÒN DE TODOS LOS REGISTROS ASOCIADOS</h5>
     </div>
     <br>
     <div class="row">
         <form action="<?php echo base_url . "sadmin.php/?controller=Usuario&action=delete"; ?>" method="POST" class="col">
             <div class="form-group">
-                <label for="id">Introduzca Nombre Instalación</label>
+                <label for="id">Introduzca Nombre Operario</label>
                 <input class="form-control" type="text" name="nombre" id="nombre" value ="<?php echo $nombre ;?>" readonly>
             </div>
             <div class="form-group">
                            
-                    <input class="form-control" type="text" name="explotacion" id="explotacion" value ="<?php echo $explotacion ;?>" readonly>
-                
-                
+                <input class="form-control" type="text" name="explotacion" id="explotacion" value ="<?php echo $explotacion ;?>" readonly>
             </div>
             <input type="hidden" id="id_instalacion" name="id_instalacion" value = "<?php echo $id ?>">
             <br><br>

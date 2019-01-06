@@ -25,7 +25,13 @@ class InstalacionController {
     function nuevo () {
        require 'models/Instalacion.php';
        $instalacion = new Instalacion();
-       $explotaciones =$instalacion->conseguirTodos ('explotacion');
+       if ($_SESSION['rol'] == 'superAdmin'){
+            $explotaciones =$instalacion->conseguirTodos ('explotacion');
+           
+        }else{
+            $explotaciones[] = ['id_explotacion'=>$_SESSION['explotacion'],'municipio'=>$_SESSION['municipio']];
+           // var_dump($explotaciones);
+       }
        require_once 'views/instalacion/nuevo.phtml';
 
     }
@@ -58,13 +64,16 @@ class InstalacionController {
             include_once 'models/Instalacion.php';
             $instalacion = new Instalacion;   
             $instalacion->setId ($_GET['dato']);
+            
             $consulta= $instalacion->conseguirId();
+            if ($_SESSION['rol'] =='admin'&& $consulta['id_explotacion2'] != $_SESSION['explotacion']){
+                header ("location: ?controller=instalacion&action=index");
+            }
+            
             if ($_SESSION['rol'] =='superAdmin'){
                 $explotaciones =$instalacion->conseguirTodos ('explotacion');
             }else{
-                $explotaciones =$instalacion->conseguirTodos ('explotacion');
-                var_dump($explotaciones);
-                exit;
+                 $explotaciones[] = ['id_explotacion'=>$_SESSION['explotacion'],'municipio'=>$_SESSION['municipio']];
             }
             
             require_once 'views/instalacion/nuevo.phtml';
@@ -101,6 +110,9 @@ class InstalacionController {
             $instalacion = new Instalacion;   
             $instalacion->setId ($_GET['dato']);
             $consulta= $instalacion->conseguirId();
+             if ($_SESSION['rol'] =='admin'&& $consulta['id_explotacion2'] != $_SESSION['explotacion']){
+                header ("location: ?controller=instalacion&action=index");
+            }
             $explotaciones =$instalacion->conseguirTodos ('explotacion');
               require_once 'views/instalacion/eliminar.phtml';
         }else{
