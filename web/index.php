@@ -16,6 +16,9 @@ require 'config/parameters.php'
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/estilo.css">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 </head>
 <body>
@@ -42,7 +45,16 @@ require 'config/parameters.php'
                         <input class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit" name="acceder" id="acceder" value="acceder">
                     </div>
                 </div>
+
             </form>
+            <div class="form-group text-center mt-2">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <label style="color:blue">Para incidencias o problemas pongase en contacto con un Administrador, o abra un ticket en el CAU</label>
+                </div>
         </div>
     </div>
 </section>
